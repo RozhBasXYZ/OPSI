@@ -8,7 +8,7 @@ Script Cek Opsi Facebook
  $ pkg install python
  $ python -m pip install requests
  $ python -m pip install bs4
- $ git clone https://github.com/RozhBasXYZ/OPSI/OPSI
+ $ git clone https://github.com/RozhBasXYZ/OPSI
  $ cd OPSI
  $ python run.py
  ```
