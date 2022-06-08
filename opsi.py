@@ -94,7 +94,8 @@ def babaz(pm,data):
 	lopi,slh,cp,tp = 0,0,0,0
 	for user in data:
 		try:
-			prox = open('.prox.txt','r').read().splitlines()
+			try:prox = open('.prox.txt','r').read().splitlines()
+			except:prox = ["182.253.197.70:8080","202.165.38.61:5678","113.11.136.28:30993","103.18.77.233:8080"]
 			proxy = {'http': 'socks4://'+random.choice(prox)}
 			try:idf,pw = user.split(f"{pm}")
 			except:print(f"{k}pemisah file salah {user}\33[m");exit()			
