@@ -9,11 +9,13 @@ Script Cek Opsi Facebook
  $ python -m pip install requests
  $ python -m pip install bs4
  $ git clone https://github.com/RozhBasXYZ/OPSI
+ $ git pull
  $ cd OPSI
  $ python run.py
  ```
 #### Untuk Yang Pernah Install Cukup Pakai Ini
  ```
   $ cd OPSI
+  $ git pull
   $ python run.py
  ```
